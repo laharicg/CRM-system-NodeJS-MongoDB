@@ -1,0 +1,7 @@
+E:\CRM>
+
+1. npm init
+2. Install all the necessary modules like espress, body-parser, mongodb, bcrypt, jsonwebtoken, dotenv, cors.
+3. Check for mongodb localhost - here its "mongodb://localhost:27017". (default)
+4. Create & check .env and add secret key. -----> JWT=secret 
+

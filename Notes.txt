@@ -1,0 +1,24 @@
+E:\CRM>
+
+1. npm init
+2. Install all the necessary modules like espress, body-parser, mongodb, bcrypt, jsonwebtoken, dotenv, cors.
+3. Check for mongodb localhost - here its "mongodb://localhost:27017". (27017 is default port)
+4. HTML file - login & register form linked with POST method by means of Id ---> document.getElementById("login") & document.getElementById("register")
+5. Create & check .env and add secret key. -----> JWT=secret (used in /login post method in index.js).
+6. Check in POSTMAN with server URLs http://localhost:3000/register  & http://localhost:3000/login
+7. POSTMAN body template json for http://localhost:3000/register
+     { "Email" : "govada.lahari@gmail.com",
+        "Firstname" : "lahari" ,
+        "Lastname" : "govada" ,
+        "Password" : "lahari"
+     }
+    
+  POSTMAN body template json for http://localhost:3000/login
+    { "Email" : "govada.lahari@gmail.com",
+        "Password" : "lahari"
+    }
+
+
+APIs
+
+
