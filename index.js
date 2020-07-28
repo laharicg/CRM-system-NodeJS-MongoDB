@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 const dotenv =require("dotenv").config();
 const url ="mongodb://localhost:27017"
+//const url = "mongodb+srv:laharic:Love2joker@cluster0.s9rbw.mongodb.net/CRM1?retryWrites=true&w=majority"
 const app = express();
 const cors = require("cors");
 app.use(bodyParser.json());
@@ -21,7 +22,7 @@ app.post("/register",async(req,res) => {
         console.log("above is hash"); 
         req.body.Password = hash
         let client = await mongodb.connect(url)
-        let db = client.db("CRM");
+        let db = client.db("CRM1");
         let data = await db.collection("data").insertOne(req.body)
        // console.log(req.body)
              
@@ -35,12 +36,12 @@ app.post("/register",async(req,res) => {
         message:"loading"
     })
 })
-
+/*
 app.post("/login", async (req,res) => {
 try{
     //console.log(req.body);
     let client = await mongodb.connect(url);
-    let db = client.db("CRM")
+    let db = client.db("CRM1")
     let user = await db.collection("data").findOne({Email: req.body.Email});
     //console.log(user);
     console.log(req.body.Email);
@@ -70,7 +71,25 @@ res.json({
 })
 
 })
+*/ 
 
+app.get("/login",async function(req,res){
+    
+    try {
+        let client = await mongodb.connect(url)
+        console.log(url)
+       let db = client.db("CRM1")
+        let data = await db.collection("data").find().toArray();
+        await client.close(data);
+        res.json(data)
+       
+    } catch (error) {
+        console.log("server catch")
+    console.log(error)
+    }
+})
+
+/*
 async function authenticate(req, res, next) {
     try{
         if(req.headers.authorization !== undefined) {
@@ -92,11 +111,14 @@ async function authenticate(req, res, next) {
         message:"Authenticated"
     })
     
-}
+} */
 
-app.get("/chat-history", [authenticate], async (req,res) =>{
+//app.get("/chat-history", [authenticate], async (req,res) =>{
+
+/*
+app.get("/chat-history", async (req,res) =>{
     let client = await mongodb.connect(url);
-    let db = client.db("CRM");
+    let db = client.db("CRM1");
     let user = await db
     .collection("data")
     .find({_id: mongodb.ObjectId(req.id)})
@@ -106,7 +128,7 @@ app.get("/chat-history", [authenticate], async (req,res) =>{
         user:user[0],
     });
 });
-
-app.listen(3000, function(){
+*/
+app.listen(3010, function(){
     console.log("listening")
 })

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Reset</title>
+    <h1>RESET PASSWORD</h1>
+</head>
+<body>
+    <div>
+        <label id ="output" style="font-family: 'Monoton', cursive;"></label>
+        <br>
+        <input type="button" value="Generate captcha" onclick="generate()">
+        <br>
+        <input type ="text" id="ec">
+        <br>
+        <input type="button" value="Check" onclick="check()">
+        <br>
+    </div>
+    <form id="product-form3">
+        <label for="">Email Address</label>
+        <input type ="email" id="login-email">
+        <br>
+        <label for="">password</label>
+        <input type="password" id="login-password">
+        <br>
+        <label for="">re enter password</label>
+        <input type="password" id="pwd2">
+        <br>
+        <input type="submit" id="b1" value="reset">
+        <input type="button" id="b2" value="Goto Login" onclick="location.href='index.html'">
+        </form>
+<script>
+const button1 = document.getElementById('b1')
+const button2 = document.getElementById('b2')
+button1.disabled = true;
+button2.disabled = true;
+function generate()
+{
+
+  function shuffle(arra1) {
+    var ctr = arra1.length, temp, index;
+    while (ctr > 0)
+     {
+index = Math.floor(Math.random() * ctr);
+ctr--;
+temp = arra1[ctr];
+        arra1[ctr] = arra1[index];
+        arra1[index] = temp;
+    }
+    var final = arra1.slice(0,8);
+
+    return final;
+}
+var myArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var final2=shuffle(myArray);
+var final3=final2.join("")
+document.getElementById('output').innerHTML= final3;
+e2= final3;
+console.log(e2)
+
+
+}
+function check()
+{
+
+var e1 = document.getElementById('ec').value;
+console.log(e2)
+if(e1==e2)
+{
+    button1.disabled = false;
+button2.disabled = false;
+    alert("now you can reset your password")
+}
+else{
+    alert("Invalid captcha, Please try again")
+}
+}
+
+            document.getElementById("product-form3").addEventListener("submit",async function(e)
+            {
+                e.preventDefault()
+            var p1= document.getElementById("login-password").value
+            var p2= document.getElementById("pwd2").value
+            console.log(p1)
+            console.log(p2)
+            if(p1==p2)
+    
+    {
+                try{
+               let data = await fetch("http://localhost:3010/register",{
+                    method:"POST",
+                    headers:{
+                        "content-type" : "application/json"
+                    },
+                    body: JSON.stringify({
+                        Email: document.getElementById("login-email").value,
+                        Password:document.getElementById("login-password").value
+                       
+                    })
+                })
+                alert("password changed, Now you can login")
+                console.log(data)
+                }
+    
+                catch(error)
+                {
+                    console.log(error)
+                }
+            }
+            else{
+                alert("passwords do-not match. please re-enter")
+            }
+            })
+        </script>
+</body>
+</html>

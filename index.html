@@ -66,7 +66,7 @@
 				</div>
 				
 				<div class="col-md-5">
- 				 		<form action="/login-page.html" id="login" role="form" method="post">
+ 				 		<form id="login" role="form" method="post">
 						<fieldset>							
 							<p class="text-uppercase"><b>Login using your account:</b></p>	
  								
@@ -77,8 +77,10 @@
 								<input type="password" name="password" id="login-password" class="form-control input-lg" placeholder="Password">
 							</div>
 							<div>
-								<input type="submit" class="btn btn-md" value="Sign In">
+								<input type="submit" class="btn btn-md" value="Sign In" onclick="location.href='login-page.html'">
 							</div>
+							<br>
+							<input type="button" value="Forgot password" onclick="location.href='forgotpwd.html'">
 								 
  						</fieldset>
 				</form>	
@@ -90,7 +92,8 @@
         document.getElementById("register").addEventListener("submit", async function (e) {
             e.preventDefault();
             try {
-                 let data = await fetch("http://localhost:3000/register", {
+				console.log("AAA")
+                 let data = await fetch("http://localhost:3010/register", {
                 method: "POST",
                 headers :{
                     "Content-type" : "application/json"
@@ -119,7 +122,7 @@
         document.getElementById("login").addEventListener("submit", async function (e) {
             e.preventDefault();
             try {
-                 let data = await fetch("http://localhost:3000/login", {
+                 let data = await fetch("http://localhost:3010/login", {
                 method: "POST",
                 headers :{
                     "Content-type" : "application/json"
