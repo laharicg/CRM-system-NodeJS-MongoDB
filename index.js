@@ -5,13 +5,11 @@ const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 const dotenv =require("dotenv").config();
 //const url ="mongodb://localhost:27017"
-const url = "mongodb+srv://laharic:Love2joker@cluster0.s9rbw.mongodb.net/CRM1?retryWrites=true&w=majorityongodb+srv:laharic:Love2joker@cluster0.s9rbw.mongodb.net/CRM1?retryWrites=true&w=majority"
+const url = "mongodb+srv://laharic:Love2joker@cluster0.s9rbw.mongodb.net/CRM1?retryWrites=true"
 const app = express();
 const cors = require("cors");
 app.use(bodyParser.json());
 app.use(cors());
-
-
 
 app.post("/register",async(req,res) => {
    // console.log(req.body)
@@ -23,18 +21,19 @@ app.post("/register",async(req,res) => {
         req.body.Password = hash
         let client = await mongodb.connect(url)
         let db = client.db("CRM1");
+        console.log(db);
         let data = await db.collection("data").insertOne(req.body)
        // console.log(req.body)
-             
+       res.json({
+        message:"loading"
+    })
         
         await client.close()
     }catch (error) {
         console.log(error)
         
     }
-    res.json({
-        message:"loading"
-    })
+    
 })
 /*
 app.post("/login", async (req,res) => {

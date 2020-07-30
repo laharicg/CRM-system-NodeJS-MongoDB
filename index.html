@@ -4,7 +4,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 	<title>CRM System</title>
 
 		<meta charset="utf-8">
@@ -92,7 +91,7 @@
         document.getElementById("register").addEventListener("submit", async function (e) {
             e.preventDefault();
             try {
-				alert("Successfully registered! Login now!");
+				
 				
                  let data = await fetch("http://localhost:3010/register", {
                 method: "POST",
@@ -105,13 +104,16 @@
                     Firstname: document.getElementById("firstname").value,
                     Lastname: document.getElementById("lastname").value,
                     Password:document.getElementById("reg-password").value
+				
 
-					
-
-                })
+				})
+				
+				
                 
                 
-            });
+			});
+			
+			alert("Success!")
             let final = await data.json();
             //console.log(final)
             } catch (error) {
