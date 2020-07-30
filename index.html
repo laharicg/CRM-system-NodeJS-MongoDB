@@ -92,7 +92,8 @@
         document.getElementById("register").addEventListener("submit", async function (e) {
             e.preventDefault();
             try {
-				console.log("AAA")
+				alert("Successfully registered! Login now!");
+				
                  let data = await fetch("http://localhost:3010/register", {
                 method: "POST",
                 headers :{
@@ -105,6 +106,7 @@
                     Lastname: document.getElementById("lastname").value,
                     Password:document.getElementById("reg-password").value
 
+					
 
                 })
                 

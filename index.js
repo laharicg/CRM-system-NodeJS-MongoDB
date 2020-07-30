@@ -4,8 +4,8 @@ const bodyParser = require("body-parser");
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 const dotenv =require("dotenv").config();
-const url ="mongodb://localhost:27017"
-//const url = "mongodb+srv:laharic:Love2joker@cluster0.s9rbw.mongodb.net/CRM1?retryWrites=true&w=majority"
+//const url ="mongodb://localhost:27017"
+const url = "mongodb+srv://laharic:Love2joker@cluster0.s9rbw.mongodb.net/CRM1?retryWrites=true&w=majorityongodb+srv:laharic:Love2joker@cluster0.s9rbw.mongodb.net/CRM1?retryWrites=true&w=majority"
 const app = express();
 const cors = require("cors");
 app.use(bodyParser.json());
