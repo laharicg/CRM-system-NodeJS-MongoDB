@@ -129,6 +129,11 @@ app.get("/chat-history", async (req,res) =>{
     });
 });
 */
+/*
 app.listen(3010, function(){
     console.log("listening")
-})
+}) */
+
+app.listen(process.env.PORT || 3010,function(){
+    console.log("server listening")
+}) 
