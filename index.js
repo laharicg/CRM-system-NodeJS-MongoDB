@@ -15,11 +15,12 @@ app.use(cors());
 app.post("/register",async(req,res) => {
    // console.log(req.body)
     try {
+        
         let salt = await bcrypt.genSalt(7);
         let hash = await bcrypt.hash(req.body.Password,salt);
         console.log(hash)
         console.log("above is hash"); 
-        req.body.Password = hash
+        req.body.Password = hash 
         let client = await mongodb.connect(url)
         let db = client.db("CRM1");
         console.log(db);
@@ -134,6 +135,6 @@ app.listen(3010, function(){
     console.log("listening")
 }) */
 
-app.listen(process.env.PORT || 3010,function(){
+app.listen(process.env.PORT || 4040,function(){
     console.log("server listening")
 }) 
